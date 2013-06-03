@@ -1,0 +1,53 @@
+﻿
+<div ng-controller="layouts.SplashController" class="l-splash">
+
+
+	<!-- BEGIN: Layout Container. -->
+	<div class="l-container">
+
+
+		<!-- BEGIN: Layout Header. -->
+		<div class="l-header">
+
+			<span class="title">
+				Interactive Lecture Admin<br />
+            </span>
+		</div>
+
+		<div class="l-login">
+            <div id="logged-in"><button id="log-out" style="height:75px; width:150px; font-size: 32px">Log out</button><span>You are logged in as <span id="login-name"></span>.
+            </div>
+            <div id="logged-out"><button style="height:75px; width:150px; font-size: 32px">Log in</button> You are not logged in.
+            </div>
+            <p id='summary'>Loading...</p>
+        </div>
+
+		<!-- END: Layout Header. -->
+
+
+		<!-- Include Body Content. -->
+		<div ng-switch="subview" class="l-body">
+			<div ng-switch-when="home" ng-include=" 'assets/app/views/home/index.htm' "></div>
+		</div>
+
+
+	</div>
+	<!-- END: Layout Container. -->
+
+
+	<!-- BEGIN: Layout Footer. -->
+	<div class="l-footer">
+
+		<div class="description">
+            An application with AngularJS based on Ben Nadels work with 'deep-routing'.
+		</div>
+
+		<div class="author">
+			Av: Robin Osborne
+		</div>
+
+	</div>
+	<!-- END: Layout Footer. -->
+
+
+</div>

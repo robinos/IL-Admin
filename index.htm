@@ -1,0 +1,62 @@
+﻿
+<!doctype html>
+<html ng-app="Intlec" ng-controller="AppController">
+<head>
+	<meta name="http-equiv" content="Content-type: text/html"; charset="utf-8" />
+
+	<title ng-bind="windowTitle">Interactive Lecture Admin</title>
+
+<!--Attempt to use separate style sheets for mobile phones...failed
+    <link rel="stylesheet" href="assets/app/css/screen.css" type="text/css" media="Screen" />
+    <link rel="stylesheet" href="assets/app/css/mobile.css" type="text/css" media="handheld" /> -->
+
+    <!-- The main css file -->
+    <link rel="stylesheet" type="text/css" href="assets/app/css/main.css">
+</head>
+<body>
+
+	<div ng-switch="subview">
+		<!--
+			This subview will show while the AngularJS app is loading since it's visible right in 
+			the page. Once the app kicks in, however, the calculated subview will determine the
+			appropriate layout to render.
+		-->
+		<div ng-switch-when="loading" class="l-loading">			
+			<p>
+				Loading application
+			</p>	
+		</div>
+
+		<!-- Core layouts - The splash (start) view, and the standard (main) view -->
+		<div ng-switch-when="splash" ng-include=" 'assets/app/views/layouts/splash.htm' "></div>
+		<div ng-switch-when="standard" ng-include=" 'assets/app/views/layouts/standard.htm' "></div>
+	</div>
+
+	<!-- ### JavaScript Modules. ### -->
+
+	<!-- Load vendor scripts. -->
+    <script src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js'></script>
+    <script src='https://interactiveclassroom.azure-mobile.net/client/MobileServices.Web-1.0.0.min.js'></script>
+    <script type="text/javascript" src="assets/vendor/angularjs/angular.min.js"></script>
+	<script type="text/javascript" src="assets/vendor/lodash/lodash.min.js"></script>
+
+	<!-- Load AngularJS main application module. (important for routing) -->
+	<script type="text/javascript" src="assets/app/main.js" charset="utf-8"></script>
+
+	<!-- Load Controllers. -->
+	<script type="text/javascript" src="assets/app/controllers/quiz/quiz-controller.js" charset="utf-8"></script>
+	<script type="text/javascript" src="assets/app/controllers/home/home-controller.js" charset="utf-8"></script>
+	<script type="text/javascript" src="assets/app/controllers/layouts/splash-controller.js" charset="utf-8"></script>
+	<script type="text/javascript" src="assets/app/controllers/layouts/standard-controller.js" charset="utf-8"></script>
+	<script type="text/javascript" src="assets/app/controllers/chat/chat-controller.js" charset="utf-8"></script>
+	<script type="text/javascript" src="assets/app/controllers/app-controller.js" charset="utf-8"></script>
+
+	<!-- Load Services - parsing, request context, and information services -->
+    <script type="text/javascript" src="assets/app/services/lodash.js" charset="utf-8"></script>
+    <script type="text/javascript" src="assets/app/services/request-context.js" charset="utf-8"></script>
+
+	<!-- Load Beans - gives render context -->
+	<script type="text/javascript" src="assets/app/beans/render-context.js" charset="utf-8"></script>
+
+</body>
+</html>
